@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "768633627527",
+    "firebase_url": "https://inaxia-orderac.firebaseio.com",
+    "project_id": "inaxia-orderac",
+    "storage_bucket": "inaxia-orderac.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:768633627527:android:ec553bc5ffda2e7eb4e922",
+        "android_client_info": {
+          "package_name": "com.inaxia.orderac"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "768633627527-ov3cfk28urn8c1cvs37vo3r9aasfp3if.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCAW4sovZEQq1C8tp3MKEm80tvxEIiEhms"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "768633627527-ov3cfk28urn8c1cvs37vo3r9aasfp3if.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

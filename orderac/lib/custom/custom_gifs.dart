@@ -1,0 +1,18 @@
+var customGifs = [
+  'assets/giphy/1.gif',
+  'assets/giphy/2.gif',
+  'assets/giphy/3.gif',
+  'assets/giphy/4.gif',
+  'assets/giphy/5.gif',
+  'assets/giphy/6.gif',
+  'assets/giphy/7.gif',
+  'assets/giphy/8.gif',
+  'assets/giphy/9.gif',
+  'assets/giphy/10.gif',
+  'assets/giphy/11.gif',
+  'assets/giphy/12.gif',
+  'assets/giphy/13.gif',
+  'assets/giphy/14.gif',
+  'assets/giphy/15.gif',
+  'assets/giphy/16.gif',
+];
