@@ -49,7 +49,7 @@ class Menu extends StatelessWidget {
                 elevation: 8.0,
                 color: customLightBlack,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(6.0)),
+                  borderRadius: BorderRadius.all(Radius.circular(4.0)),
                 ),
                 child: Container(
                   height: 140.0,
@@ -61,80 +61,52 @@ class Menu extends StatelessWidget {
                         height: 140.0,
                         width: 140.0,
                         child: ClipRRect(
-                          borderRadius: BorderRadius.all(Radius.circular(6.0)),
+                          borderRadius: BorderRadius.all(Radius.circular(4.0)),
                           child: Image.asset(
                             customMenuImage[0][index],
                             fit: BoxFit.cover,
                           ),
                         ),
                       ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(vertical: 8.0),
-                        child: SizedBox(
-                          width: 150.0,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Some pizza',
-                                overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 18.0),
-                              ),
-                              Text(
-                                'You can initialize this repository with code from a Subversion, Mercurial, or TFS project',
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: 3,
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 12.0),
-                              ),
-                              Text(
-                                '\$ 13',
-                                overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 18.0),
-                              ),
-                            ],
+                      Container(
+                        child: Expanded(
+                          flex: 1,
+                          child: Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      'Some pizza',
+                                      overflow: TextOverflow.ellipsis,
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 18.0),
+                                    ),
+                                    Text(
+                                      '\$ 13',
+                                      overflow: TextOverflow.ellipsis,
+                                      style: TextStyle(
+                                        color: Colors.white, fontSize: 18.0
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Text(
+                                  'You can initialize this repository with code from a Subversion, Mercurial, or TFS project',
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 3,
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 12.0),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
-                      SizedBox(
-                        width: 80.0,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            SizedBox(
-                              height: 40.0,
-                              width: 40.0,
-                              child: OutlineButton(
-                                child: Center(
-                                  child: Icon(Icons.add),
-                                ),
-                                onPressed: () {},
-                              ),
-                            ),
-                            SizedBox(
-                              height: 40.0,
-                              width: 40.0,
-                              child: RaisedButton(onPressed: null),
-                            ),
-                            SizedBox(
-                              height: 40.0,
-                              width: 40.0,
-                              child: Center(
-                                child: OutlineButton(
-                                  child: Center(
-                                    child: Icon(Icons.remove),
-                                  ),
-                                  onPressed: () {},
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      )
                     ],
                   ),
                 ),

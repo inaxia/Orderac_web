@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:orderac/custom/custom_colors.dart';
 import 'package:orderac/custom/custom_gifs.dart';
+import 'package:orderac/information/about_food_courts/food_courts.dart';
 import 'package:orderac/screens/home/menu.dart';
 import 'package:orderac/services/auth_service.dart';
 import 'package:orderac/services/database_service.dart';
@@ -23,41 +24,49 @@ class Home extends StatelessWidget {
           elevation: 1.0,
           backgroundColor: customDarkBlack,
           title: Text('Food Courts'),
+          actions: [
+            FlatButton.icon(
+              onPressed: () async {
+                await _auth.signOutWithFirebase();
+              },
+              icon: Icon(Icons.exit_to_app_outlined),
+              label: Text('Sign out'),
+            ),
+          ],
         ),
         SliverGrid.count(
           crossAxisCount: 2,
           mainAxisSpacing: 4.0,
           crossAxisSpacing: 4.0,
-          children: List.generate(
-            16, 
-            (index) {
-              return GestureDetector(
-                onTap: () {
-                  Navigator.push(context, SlideLeftRoute(page: Menu()));
-                },
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(5.0)),
-                    // color: customLightBlack,
-                    image: DecorationImage(
-                      image: AssetImage(customGifs[index]),
-                      fit: BoxFit.cover,
-                    ),
+          children: List.generate(8, (index) {
+            return GestureDetector(
+              onTap: () {
+                Navigator.push(context, SlideLeftRoute(page: Menu()));
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                  color: customLightBlack,
+                  image: DecorationImage(
+                    image: AssetImage(customGifs[index]),
+                    fit: BoxFit.cover,
                   ),
-                  child: Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Text(
-                      'Dish',
-                      style: TextStyle(
-                        fontSize: 25.0,
-                        color: Colors.black,
-                      ),
+                ),
+                child: Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text(
+                    foodCourts[index],
+                    maxLines: 2,
+                    style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 25.0,
+                      color: Colors.black,
                     ),
                   ),
                 ),
-              );
-            }
-          ),
+              ),
+            );
+          }),
         )
       ],
     );
