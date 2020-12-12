@@ -1,62 +1,124 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:orderac_web/custom/custom_colors.dart';
-import 'package:orderac_web/services/auth_services.dart';
-import 'package:orderac_web/shared/loading.dart';
+import 'package:orderac_web/screens/home/Orders/all_orders.dart';
+import 'package:orderac_web/shared/buttons/flat_botton.dart';
+import 'package:orderac_web/shared/buttons/outline_button.dart';
 
 class Home extends StatelessWidget {
-  final AuthService _auth = AuthService();
-
   @override
   Widget build(BuildContext context) {
-    final CollectionReference items =
-        FirebaseFirestore.instance.collection('Orders');
-
-    final appBar = AppBar(
-      backgroundColor: customDarkBlack,
-      title: Text('orderac'),
-      actions: [
-        FlatButton.icon(
-          label: Text('Sign out'),
-          icon: Icon(Icons.exit_to_app),
-          onPressed: () async {
-            await _auth.signOutWithFirebase();
-          },
+    final body = ListView(
+      children: [
+        Container(
+          height: 750.0,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/banners/1.jpg'),
+              fit: BoxFit.cover,
+              colorFilter: ColorFilter.mode(Colors.black45, BlendMode.darken)
+            )
+          ),
+          child: Container(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Container(
+                  height: 60.0,
+                  color: Colors.black54,
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 150.0),
+                    child: Container(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Expanded(
+                            flex: 7,
+                            child: Text(
+                              'Orderac',
+                              style: TextStyle(
+                                color: Colors.white70,
+                                fontWeight: FontWeight.w500,
+                                fontSize: 20.0,
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            flex: 3,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                flatButton('Home'),
+                                flatButton('About'),
+                                flatButton('Contact Us'),
+                                outlineButton(context, 'Join Us', Home())
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 80.0, horizontal: 150.0),
+                  child: Expanded(
+                    flex: 1,
+                    child: Container(
+                      child: Row(
+                        children: [
+                          Expanded(
+                            flex: 5,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  child: Text(
+                                    'NOTHING\nBRINGS PEOPLE\nTOGETHER\nLIKE\nGOOD FOOD.',
+                                    textAlign: TextAlign.left,
+                                    style: TextStyle(
+                                      fontSize: 70.0,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white70
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(height: 20.0),
+                                ButtonTheme(
+                                  minWidth: 150.0,
+                                  height: 50.0,
+                                  child: outlineButton(context, 'Go To Orders', AllOrders()),
+                                )
+                              ],
+                            ),
+                          ),
+                          Expanded(
+                            flex: 5,
+                            child: Container(),
+                          ),
+                        ],
+                      ),
+                    )
+                  ),
+                ),
+              ],
+            ),
+          ),
         ),
+        // SizedBox(
+        //   height: 1000.0,
+        //   child: Container(
+        //     color: customLightBlack,
+        //   ),
+        // ),
+        Container(
+          height: 200.0,
+          color: customDarkBlack,
+        )
       ],
     );
 
-    final body = StreamBuilder<QuerySnapshot>(
-      stream: items.snapshots(),
-      builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-        if (snapshot.hasError) {
-          return Container(
-            child: Center(
-              child: Text('SOME ERROR HAS OCCURED'),
-            ),
-          );
-        }
-
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return Loading();
-        }
-
-        return new ListView(
-          children: snapshot.data.docs.map((DocumentSnapshot document) {
-            return new ListTile(
-              title: new Text(
-                document.data()['Name'],
-                style: TextStyle(color: Colors.white),
-              ),
-            );
-          }).toList(),
-        );
-      },
-    );
-
     return Scaffold(
-      backgroundColor: customDarkBlack,
-      appBar: appBar,
+      backgroundColor: customLightBlack,
       body: body,
     );
   }
