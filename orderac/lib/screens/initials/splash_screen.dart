@@ -25,15 +25,28 @@ class _SplashScreenState extends State<SplashScreen> {
         image: DecorationImage(
             image: AssetImage('assets/initials/splash.jpg'),
             fit: BoxFit.cover,
-            colorFilter: ColorFilter.mode(Colors.black38, BlendMode.darken)),
+            colorFilter: ColorFilter.mode(Colors.black45, BlendMode.darken)),
       ),
       child: Center(
-        child: Container(
-          child: SizedBox(
-            height: 150.0,
-            width: 150.0,
-            child: Image.asset('assets/icon/icon.png'),
-          ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              child: SizedBox(
+                height: 150.0,
+                width: 150.0,
+                child: Image.asset('assets/icon/icon.png'),
+              ),
+            ),
+            Text(
+              'Orderac', 
+              style: TextStyle(
+                fontSize: 24.0, 
+                fontWeight: FontWeight.w500,
+                color: Colors.white,
+              ),
+            ),
+          ],
         ),
       ),
     );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:orderac/custom/custom_banners.dart';
 import 'package:orderac/custom/custom_colors.dart';
 import 'package:orderac/custom/custom_gifs.dart';
 import 'package:orderac/information/food_courts.dart';
@@ -34,8 +35,8 @@ class Home extends StatelessWidget {
         ),
         SliverGrid.count(
           crossAxisCount: 2,
-          mainAxisSpacing: 4.0,
-          crossAxisSpacing: 4.0,
+          mainAxisSpacing: 10.0,
+          crossAxisSpacing: 5.0,
           children: List.generate(8, (index) {
             return GestureDetector(
               onTap: () {
@@ -45,22 +46,49 @@ class Home extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(5.0)),
                   color: customLightBlack,
-                  image: DecorationImage(
-                    image: AssetImage(customGifs[index]),
-                    fit: BoxFit.cover,
-                  ),
                 ),
-                child: Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Text(
-                    foodCourts[index][0],
-                    maxLines: 2,
-                    style: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 25.0,
-                      color: Colors.black,
+                child: Column(
+                  children: [
+                    Expanded(
+                      flex: 8,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                          color: customLightBlack,
+                          image: DecorationImage(
+                            image: AssetImage(customBanners[index]),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        // child: Padding(
+                        //   padding: EdgeInsets.all(8.0),
+                        //   child: Text(
+                        //     foodCourts[index][0],
+                        //     maxLines: 2,
+                        //     style: TextStyle(
+                        //       fontWeight: FontWeight.w500,
+                        //       fontSize: 25.0,
+                        //       color: Colors.black,
+                        //     ),
+                        //   ),
+                        // ),
+                      ),
                     ),
-                  ),
+                    Expanded(
+                      flex: 2,
+                      child: Center(
+                        child: Text(
+                          foodCourts[index][0],
+                          maxLines: 2,
+                          style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 18.0,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
                 ),
               ),
             );

@@ -1,7 +1,7 @@
 var baskinRobins = [
   [
     'assets/food_courts/baskin_robins/ice_cream1.jpg',
-    'Three Cheers Chocolate',
+    'Cheers Chocolate',
     '\$22.5',
     'Chocolate & vanilla swirled with chocolate ribbon & chocolate chips',
   ],
@@ -25,7 +25,7 @@ var baskinRobins = [
   ],
   [
     'assets/food_courts/baskin_robins/ice_cream5.jpg',
-    'Very Bery Strawberry',
+    'Bery Strawberry',
     '\$29.9',
     'Strawberry ice-cream with strawberry pieces',
   ],

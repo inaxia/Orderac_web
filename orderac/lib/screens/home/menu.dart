@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:orderac/custom/custom_colors.dart';
-import 'package:orderac/custom/custom_menu_image.dart';
 import 'package:orderac/screens/home/bill.dart';
 import 'package:orderac/shared/page_transitions/slide_right_route.dart';
 import 'package:orderac/shared/snack_bar.dart';
@@ -126,7 +125,7 @@ class Menu extends StatelessWidget {
                                       height: 40.0,
                                       child: GestureDetector(
                                         onTap: () {
-                                          addItem(tempFoodItems[index][0]);
+                                          addItem(tempFoodItems[index][1]);
                                           final snackBar = showSnackBar(Icons.thumb_up_alt_outlined, 'Order Placed', Colors.white);
                                           _scaffoldKey.currentState.showSnackBar(snackBar);
                                         },
@@ -136,12 +135,13 @@ class Menu extends StatelessWidget {
                                               Radius.circular(4.0),
                                             ),
                                             border: Border.all(
-                                                color: customDarkBlack,
-                                                width: 2.0,
-                                                style: BorderStyle.solid),
+                                              color: Colors.white60,
+                                              width: 1.0,
+                                              style: BorderStyle.solid,
+                                            ),
                                           ),
                                           child: Center(
-                                            child: Icon(Icons.add),
+                                            child: Icon(Icons.add, color: Colors.white70),
                                           ),
                                         ),
                                       ),
@@ -158,7 +158,7 @@ class Menu extends StatelessWidget {
                 ),
               );
             },
-            childCount: customMenuImage[0].length,
+            childCount: tempFoodItems.length,
           ),
         )
       ],
