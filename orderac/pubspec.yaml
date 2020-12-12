@@ -58,7 +58,14 @@ flutter:
     - assets/icon/
     - assets/initials/
     - assets/giphy/
+    - assets/food_courts/baskin_robins/
+    - assets/food_courts/chowman/
     - assets/food_courts/dominos_pizza/
+    - assets/food_courts/dunkin_donuts/
+    - assets/food_courts/keventers/
+    - assets/food_courts/mc_donalds/
+    - assets/food_courts/pillsbury/
+    - assets/food_courts/starbucks/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

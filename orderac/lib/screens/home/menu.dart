@@ -71,7 +71,7 @@ class Menu extends StatelessWidget {
                         child: ClipRRect(
                           borderRadius: BorderRadius.all(Radius.circular(4.0)),
                           child: Image.asset(
-                            customMenuImage[0][index],
+                            tempFoodItems[index][0],
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -89,14 +89,17 @@ class Menu extends StatelessWidget {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text(
-                                      tempFoodItems[index][0],
-                                      overflow: TextOverflow.ellipsis,
-                                      style: TextStyle(
-                                          color: Colors.white, fontSize: 20.0),
+                                    SizedBox(
+                                      width: 180.0,
+                                      child: Text(
+                                        tempFoodItems[index][1],
+                                        overflow: TextOverflow.ellipsis,
+                                        style: TextStyle(
+                                            color: Colors.white, fontSize: 20.0),
+                                      ),
                                     ),
                                     Text(
-                                      tempFoodItems[index][1],
+                                      tempFoodItems[index][2],
                                       overflow: TextOverflow.ellipsis,
                                       style: TextStyle(
                                           color: Colors.white, fontSize: 18.0),
@@ -104,13 +107,12 @@ class Menu extends StatelessWidget {
                                   ],
                                 ),
                                 Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     SizedBox(
                                       width: 180.0,
                                       child: Text(
-                                        tempFoodItems[index][2],
+                                        tempFoodItems[index][3],
                                         overflow: TextOverflow.ellipsis,
                                         maxLines: 3,
                                         style: TextStyle(

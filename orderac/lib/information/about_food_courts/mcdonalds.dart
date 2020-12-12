@@ -1,0 +1,32 @@
+var mcDonalds = [
+  [
+    'assets/food_courts/mc_donalds/burger1.jpg',
+    '',
+    '\$22.5',
+    '',
+  ],
+  [
+    'assets/food_courts/mc_donalds/burger2.jpg',
+    '',
+    '\$22.5',
+    '',
+  ],
+  [
+    'assets/food_courts/mc_donalds/burger3.jpg',
+    '',
+    '\$22.5',
+    '',
+  ],
+  [
+    'assets/food_courts/mc_donalds/burger4.jpg',
+    '',
+    '\$22.5',
+    '',
+  ],
+  [
+    'assets/food_courts/mc_donalds/burger5.jpg',
+    '',
+    '\$22.5',
+    '',
+  ],
+];
