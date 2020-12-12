@@ -4,8 +4,13 @@ import 'package:orderac/custom/custom_colors.dart';
 import 'package:orderac/custom/custom_menu_image.dart';
 import 'package:orderac/screens/home/bill.dart';
 import 'package:orderac/shared/page_transitions/slide_right_route.dart';
+import 'package:orderac/shared/snack_bar.dart';
 
 class Menu extends StatelessWidget {
+  final foodItems;
+
+  Menu({this.foodItems});
+
   final CollectionReference firestore =
       FirebaseFirestore.instance.collection('Orders');
 
@@ -17,6 +22,9 @@ class Menu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var tempFoodItems = foodItems[1];
+    final _scaffoldKey = GlobalKey<ScaffoldState>();
+    
     final body = CustomScrollView(
       physics: BouncingScrollPhysics(),
       slivers: [
@@ -78,29 +86,65 @@ class Menu extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      'Some pizza',
+                                      tempFoodItems[index][0],
+                                      overflow: TextOverflow.ellipsis,
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 20.0),
+                                    ),
+                                    Text(
+                                      tempFoodItems[index][1],
                                       overflow: TextOverflow.ellipsis,
                                       style: TextStyle(
                                           color: Colors.white, fontSize: 18.0),
                                     ),
-                                    Text(
-                                      '\$ 13',
-                                      overflow: TextOverflow.ellipsis,
-                                      style: TextStyle(
-                                        color: Colors.white, fontSize: 18.0
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    SizedBox(
+                                      width: 180.0,
+                                      child: Text(
+                                        tempFoodItems[index][2],
+                                        overflow: TextOverflow.ellipsis,
+                                        maxLines: 3,
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 13.0,
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: 40.0,
+                                      height: 40.0,
+                                      child: GestureDetector(
+                                        onTap: () {
+                                          addItem(tempFoodItems[index][0]);
+                                          final snackBar = showSnackBar(Icons.thumb_up_alt_outlined, 'Order Placed', Colors.white);
+                                          _scaffoldKey.currentState.showSnackBar(snackBar);
+                                        },
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.all(
+                                              Radius.circular(4.0),
+                                            ),
+                                            border: Border.all(
+                                                color: customDarkBlack,
+                                                width: 2.0,
+                                                style: BorderStyle.solid),
+                                          ),
+                                          child: Center(
+                                            child: Icon(Icons.add),
+                                          ),
+                                        ),
                                       ),
                                     ),
                                   ],
-                                ),
-                                Text(
-                                  'You can initialize this repository with code from a Subversion, Mercurial, or TFS project',
-                                  overflow: TextOverflow.ellipsis,
-                                  maxLines: 3,
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 12.0),
                                 ),
                               ],
                             ),
@@ -119,6 +163,7 @@ class Menu extends StatelessWidget {
     );
 
     return Scaffold(
+      key: _scaffoldKey,
       backgroundColor: customDarkBlack,
       body: body,
     );

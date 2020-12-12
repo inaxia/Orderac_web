@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:orderac/custom/custom_colors.dart';
 import 'package:orderac/custom/custom_gifs.dart';
-import 'package:orderac/information/about_food_courts/food_courts.dart';
+import 'package:orderac/information/food_courts.dart';
 import 'package:orderac/screens/home/menu.dart';
 import 'package:orderac/services/auth_service.dart';
 import 'package:orderac/services/database_service.dart';
@@ -13,8 +13,6 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _scaffoldKey = GlobalKey<ScaffoldState>();
-
     final body = CustomScrollView(
       physics: BouncingScrollPhysics(),
       slivers: [
@@ -29,8 +27,8 @@ class Home extends StatelessWidget {
               onPressed: () async {
                 await _auth.signOutWithFirebase();
               },
-              icon: Icon(Icons.exit_to_app_outlined),
-              label: Text('Sign out'),
+              icon: Icon(Icons.exit_to_app_outlined, color: Colors.white),
+              label: Text('Sign out', style: TextStyle(color: Colors.white),),
             ),
           ],
         ),
@@ -41,7 +39,7 @@ class Home extends StatelessWidget {
           children: List.generate(8, (index) {
             return GestureDetector(
               onTap: () {
-                Navigator.push(context, SlideLeftRoute(page: Menu()));
+                Navigator.push(context, SlideLeftRoute(page: Menu(foodItems: foodCourts[index])));
               },
               child: Container(
                 decoration: BoxDecoration(
@@ -55,7 +53,7 @@ class Home extends StatelessWidget {
                 child: Padding(
                   padding: EdgeInsets.all(8.0),
                   child: Text(
-                    foodCourts[index],
+                    foodCourts[index][0],
                     maxLines: 2,
                     style: TextStyle(
                       fontWeight: FontWeight.w500,
@@ -74,7 +72,6 @@ class Home extends StatelessWidget {
     return StreamProvider.value(
       value: DatabaseService().items,
       child: Scaffold(
-        key: _scaffoldKey,
         backgroundColor: customDarkBlack,
         body: body,
       ),

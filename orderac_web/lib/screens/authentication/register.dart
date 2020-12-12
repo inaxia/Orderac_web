@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:orderac_web/custom/custom_colors.dart';
 import 'package:orderac_web/services/auth_services.dart';
 import 'package:orderac_web/shared/loading.dart';
 
@@ -24,6 +25,7 @@ class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     final appBar = AppBar(
+      backgroundColor: customDarkBlack,
       title: Text('Register to orderac'),
       elevation: 0.0,
       actions: [
@@ -113,6 +115,7 @@ class _RegisterState extends State<Register> {
       ? Loading()
       : Scaffold(
           key: _scaffoldKey,
+          backgroundColor: customDarkBlack,
           appBar: appBar,
           body: body,
         );
