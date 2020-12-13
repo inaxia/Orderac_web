@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:orderac/custom/custom_colors.dart';
 import 'package:orderac/services/auth_service.dart';
 import 'package:orderac/shared/loading.dart';
 import 'package:orderac/shared/snack_bar.dart';
@@ -15,7 +16,6 @@ class SignIn extends StatefulWidget {
 class _SignInState extends State<SignIn> {
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
-  final _scaffoldKey = GlobalKey<ScaffoldState>();
 
   String email = '';
   String password = '';
@@ -25,7 +25,13 @@ class _SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
     final appBar = AppBar(
-      title: Text('Sign in to orderac'),
+      backgroundColor: customDarkBlack,
+      title: Text(
+        'Sign in to orderac',
+        style: TextStyle(
+          color: Colors.white,
+        ),
+      ),
       elevation: 0.0,
       actions: [
         FlatButton.icon(
@@ -53,9 +59,21 @@ class _SignInState extends State<SignIn> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text('Sign In'),
+            Text(
+              'Sign In',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18.0,
+              ),
+            ),
             TextFormField(
-              cursorColor: Colors.black,
+              style: TextStyle(color: Colors.white),
+              cursorColor: Colors.white,
+              decoration: InputDecoration(
+                hoverColor: Colors.white,
+                fillColor: Colors.white,
+                focusColor: Colors.white,
+              ),
               validator: (value) {
                 if (value == '') {
                   return 'Enter an email';
@@ -70,7 +88,13 @@ class _SignInState extends State<SignIn> {
               },
             ),
             TextFormField(
-              cursorColor: Colors.black,
+              style: TextStyle(color: Colors.white),
+              cursorColor: Colors.white,
+              decoration: InputDecoration(
+                hoverColor: Colors.white,
+                fillColor: Colors.white,
+                focusColor: Colors.white,
+              ),
               validator: (value) {
                 if (value.length < 6) {
                   return 'Password must be atleast 6 characters';
@@ -98,8 +122,6 @@ class _SignInState extends State<SignIn> {
                     error = result;
                   });
                 }
-                final snackBar = showSnackBar(Icons.error_outline, error, Colors.red);
-                _scaffoldKey.currentState.showSnackBar(snackBar);
               },
             ),
             SizedBox(height: 15.0),
@@ -115,7 +137,7 @@ class _SignInState extends State<SignIn> {
     return (loading)
       ? Loading()
       : Scaffold(
-          key: _scaffoldKey,
+          backgroundColor: customDarkBlack,
           appBar: appBar,
           body: body,
         );

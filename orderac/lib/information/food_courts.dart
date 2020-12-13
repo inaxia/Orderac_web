@@ -8,12 +8,12 @@ import 'package:orderac/information/about_food_courts/pillsbury.dart';
 import 'package:orderac/information/about_food_courts/starbucks.dart';
 
 var foodCourts = [
-  ['Baskin\' Robins', baskinRobins],
-  ['Chowman', chowman],
-  ['Domino\'s Pizza', dominosPizza],
-  ['Dunkin\' Donuts', dunkinDonuts],
-  ['Keventers', keventers],
-  ['McDonals\'s', mcDonalds],
-  ['Pillsbury', pillsbury],
-  ['Starbucks', starbucks],
+  ['Baskin\' Robins', baskinRobins, 'baskin_robins'],
+  ['Chowman', chowman, 'chowman'],
+  ['Domino\'s Pizza', dominosPizza, 'dominos_pizza'],
+  ['Dunkin\' Donuts', dunkinDonuts, 'dunkin_donuts'],
+  ['Keventers', keventers, 'keventers'],
+  ['McDonals\'s', mcDonalds, 'mc_donalds'],
+  ['Pillsbury', pillsbury, 'pillsbury'],
+  ['Starbucks', starbucks, 'starbucks'],
 ];

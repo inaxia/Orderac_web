@@ -1,29 +1,34 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:orderac/custom/custom_colors.dart';
+import 'package:orderac/information/global_variables.dart';
 import 'package:orderac/screens/home/bill.dart';
 import 'package:orderac/shared/page_transitions/slide_right_route.dart';
 import 'package:orderac/shared/snack_bar.dart';
 
 class Menu extends StatelessWidget {
+  final foodCourt;
   final foodItems;
 
-  Menu({this.foodItems});
+  Menu({this.foodCourt, this.foodItems});
 
-  final CollectionReference firestore =
-      FirebaseFirestore.instance.collection('Orders');
-
-  Future<void> addItem(itemName) {
-    return firestore.add({
-      'Name': itemName,
-    });
-  }
+  // final objectFoodCourt = Menu();
 
   @override
   Widget build(BuildContext context) {
-    var tempFoodItems = foodItems[1];
+    final CollectionReference collectionReference = FirebaseFirestore.instance
+        .collection('food_courts')
+        .doc(foodCourt)
+        .collection(globalOrderID);
+
+    Future<void> addItem(itemName) {
+      return collectionReference.add({
+        'Name': itemName,
+      });
+    }
+
     final _scaffoldKey = GlobalKey<ScaffoldState>();
-    
+
     final body = CustomScrollView(
       physics: BouncingScrollPhysics(),
       slivers: [
@@ -40,14 +45,14 @@ class Menu extends StatelessWidget {
               Navigator.of(context).pop();
             },
           ),
-          actions: [
-            IconButton(
-              icon: Icon(Icons.shopping_cart_outlined),
-              onPressed: () {
-                Navigator.push(context, SlideLeftRoute(page: Bill()));
-              },
-            )
-          ],
+          // actions: [
+          //   IconButton(
+          //     icon: Icon(Icons.shopping_cart_outlined),
+          //     onPressed: () {
+          //       Navigator.push(context, SlideLeftRoute(page: Bill()));
+          //     },
+          //   )
+          // ],
         ),
         SliverList(
           delegate: SliverChildBuilderDelegate(
@@ -70,7 +75,7 @@ class Menu extends StatelessWidget {
                         child: ClipRRect(
                           borderRadius: BorderRadius.all(Radius.circular(4.0)),
                           child: Image.asset(
-                            tempFoodItems[index][0],
+                            foodItems[index][0],
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -91,14 +96,15 @@ class Menu extends StatelessWidget {
                                     SizedBox(
                                       width: 180.0,
                                       child: Text(
-                                        tempFoodItems[index][1],
+                                        foodItems[index][1],
                                         overflow: TextOverflow.ellipsis,
                                         style: TextStyle(
-                                            color: Colors.white, fontSize: 20.0),
+                                            color: Colors.white,
+                                            fontSize: 20.0),
                                       ),
                                     ),
                                     Text(
-                                      tempFoodItems[index][2],
+                                      foodItems[index][2],
                                       overflow: TextOverflow.ellipsis,
                                       style: TextStyle(
                                           color: Colors.white, fontSize: 18.0),
@@ -106,12 +112,13 @@ class Menu extends StatelessWidget {
                                   ],
                                 ),
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     SizedBox(
                                       width: 180.0,
                                       child: Text(
-                                        tempFoodItems[index][3],
+                                        foodItems[index][3],
                                         overflow: TextOverflow.ellipsis,
                                         maxLines: 3,
                                         style: TextStyle(
@@ -125,7 +132,7 @@ class Menu extends StatelessWidget {
                                       height: 40.0,
                                       child: GestureDetector(
                                         onTap: () {
-                                          addItem(tempFoodItems[index][1]);
+                                          addItem(foodItems[index][1]);
                                           final snackBar = showSnackBar(Icons.thumb_up_alt_outlined, 'Order Placed', Colors.white);
                                           _scaffoldKey.currentState.showSnackBar(snackBar);
                                         },
@@ -141,7 +148,8 @@ class Menu extends StatelessWidget {
                                             ),
                                           ),
                                           child: Center(
-                                            child: Icon(Icons.add, color: Colors.white70),
+                                            child: Icon(Icons.add,
+                                                color: Colors.white70),
                                           ),
                                         ),
                                       ),
@@ -158,7 +166,7 @@ class Menu extends StatelessWidget {
                 ),
               );
             },
-            childCount: tempFoodItems.length,
+            childCount: foodItems.length,
           ),
         )
       ],

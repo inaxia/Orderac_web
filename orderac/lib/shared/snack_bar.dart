@@ -3,7 +3,7 @@ import 'package:orderac/custom/custom_colors.dart';
 
 showSnackBar(icon, message, color) {
   return SnackBar(
-    backgroundColor: customDarkBlack,
+    backgroundColor: customPink,
     behavior: SnackBarBehavior.floating,
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.all(Radius.circular(8.0)),
@@ -18,7 +18,10 @@ showSnackBar(icon, message, color) {
         Text(
           message,
           style: TextStyle(
-              fontSize: 18.0, color: color, fontWeight: FontWeight.w400),
+            fontSize: 18.0,
+            color: color,
+            fontWeight: FontWeight.w400,
+          ),
         ),
       ],
     ),

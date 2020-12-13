@@ -1,8 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:orderac/custom/custom_banners.dart';
 import 'package:orderac/custom/custom_colors.dart';
-import 'package:orderac/custom/custom_gifs.dart';
+import 'package:orderac/information/about_user.dart';
 import 'package:orderac/information/food_courts.dart';
+import 'package:orderac/information/global_variables.dart';
 import 'package:orderac/screens/home/menu.dart';
 import 'package:orderac/services/auth_service.dart';
 import 'package:orderac/services/database_service.dart';
@@ -11,6 +13,7 @@ import 'package:provider/provider.dart';
 
 class Home extends StatelessWidget {
   final AuthService _auth = AuthService();
+  final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +32,10 @@ class Home extends StatelessWidget {
                 await _auth.signOutWithFirebase();
               },
               icon: Icon(Icons.exit_to_app_outlined, color: Colors.white),
-              label: Text('Sign out', style: TextStyle(color: Colors.white),),
+              label: Text(
+                'Sign out',
+                style: TextStyle(color: Colors.white),
+              ),
             ),
           ],
         ),
@@ -40,7 +46,10 @@ class Home extends StatelessWidget {
           children: List.generate(8, (index) {
             return GestureDetector(
               onTap: () {
-                Navigator.push(context, SlideLeftRoute(page: Menu(foodItems: foodCourts[index])));
+                Navigator.push(
+                  context,
+                  SlideLeftRoute(page: Menu(foodCourt: foodCourts[index][2], foodItems: foodCourts[index][1])),
+                );
               },
               child: Container(
                 decoration: BoxDecoration(
@@ -97,11 +106,39 @@ class Home extends StatelessWidget {
       ],
     );
 
+    final floatingActionButton = FloatingActionButton(
+      backgroundColor: customPink,
+      child: Icon(Icons.qr_code),
+      onPressed: () async {
+        final user = firebaseAuth.currentUser;
+        globalOrderID = user.uid;
+        showDialog(
+          context: context,
+          child: AlertDialog(
+            backgroundColor: customDarkBlack,
+            title: Text(
+              'Your Order ID',
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
+            content: Text(
+              globalOrderID.toString(),
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
+          ),
+        );
+      },
+    );
+
     return StreamProvider.value(
       value: DatabaseService().items,
       child: Scaffold(
         backgroundColor: customDarkBlack,
         body: body,
+        floatingActionButton: floatingActionButton,
       ),
     );
   }

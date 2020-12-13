@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:orderac/custom/custom_colors.dart';
 import 'package:orderac/services/auth_service.dart';
 import 'package:orderac/shared/loading.dart';
 import 'package:orderac/shared/snack_bar.dart';
@@ -15,7 +16,6 @@ class Register extends StatefulWidget {
 class _RegisterState extends State<Register> {
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
-  final _scaffoldKey = GlobalKey<ScaffoldState>();
 
   String email = '';
   String password = '';
@@ -25,7 +25,13 @@ class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     final appBar = AppBar(
-      title: Text('Register to orderac'),
+      backgroundColor: customDarkBlack,
+      title: Text(
+        'Register to orderac',
+        style: TextStyle(
+          color: Colors.white,
+        ),
+      ),
       elevation: 0.0,
       actions: [
         FlatButton.icon(
@@ -53,8 +59,21 @@ class _RegisterState extends State<Register> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text('Register'),
+            Text(
+              'Register',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18.0,
+              ),
+            ),
             TextFormField(
+              style: TextStyle(color: Colors.white),
+              cursorColor: Colors.white,
+              decoration: InputDecoration(
+                hoverColor: Colors.white,
+                fillColor: Colors.white,
+                focusColor: Colors.white,
+              ),
               validator: (value) {
                 if (value == '') {
                   return 'Enter an email';
@@ -69,6 +88,13 @@ class _RegisterState extends State<Register> {
               },
             ),
             TextFormField(
+              style: TextStyle(color: Colors.white),
+              cursorColor: Colors.white,
+              decoration: InputDecoration(
+                hoverColor: Colors.white,
+                fillColor: Colors.white,
+                focusColor: Colors.white,
+              ),
               validator: (value) {
                 if (value.length < 6) {
                   return 'Password must be atleast 6 characters';
@@ -96,8 +122,6 @@ class _RegisterState extends State<Register> {
                     error = result;
                   });
                 }
-                final snackBar = showSnackBar(Icons.error_outline, error, Colors.red);
-                _scaffoldKey.currentState.showSnackBar(snackBar);
               },
             ),
             SizedBox(height: 15.0),
@@ -113,7 +137,7 @@ class _RegisterState extends State<Register> {
     return (loading)
       ? Loading()
       : Scaffold(
-          key: _scaffoldKey,
+          backgroundColor: customDarkBlack,
           appBar: appBar,
           body: body,
         );
