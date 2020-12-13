@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:orderac_web/screens/home/home.dart';
 
-flatButton(text) {
+flatButton(context, text) {
   return FlatButton(
-    onPressed: null,
+    autofocus: true,
+    hoverColor: Colors.transparent,
+    color: Colors.transparent,
     child: Text(
       text,
       style: TextStyle(
@@ -11,5 +14,11 @@ flatButton(text) {
         fontSize: 16.0,
       ),
     ),
+    onPressed: () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => Home()),
+      );
+    },
   );
 }

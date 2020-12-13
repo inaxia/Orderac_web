@@ -4,7 +4,10 @@ import 'package:orderac_web/custom/custom_colors.dart';
 import 'package:orderac_web/services/auth_services.dart';
 import 'package:orderac_web/shared/loading.dart';
 
-class AllOrders extends StatelessWidget {
+class TempOrders extends StatelessWidget {
+  final foodCourt;
+
+  TempOrders({this.foodCourt});
   // final AuthService _auth = AuthService();
 
   @override
@@ -12,9 +15,23 @@ class AllOrders extends StatelessWidget {
     final CollectionReference items =
         FirebaseFirestore.instance.collection('Orders');
 
+    var users = FirebaseFirestore.instance
+        .collection('food_courts')
+        .doc(foodCourt)
+        .get();
+
     final appBar = AppBar(
       backgroundColor: customLightBlack,
-      title: Text('Orders'),
+      title: Text('orderac'),
+      actions: [
+        FlatButton.icon(
+          label: Text('Sign out'),
+          icon: Icon(Icons.exit_to_app),
+          onPressed: () async {
+            // await _auth.signOutWithFirebase();
+          },
+        ),
+      ],
     );
 
     final body = StreamBuilder<QuerySnapshot>(
@@ -32,7 +49,7 @@ class AllOrders extends StatelessWidget {
           return Loading();
         }
 
-        return new ListView(
+        return ListView(
           children: snapshot.data.docs.map((DocumentSnapshot document) {
             return new ListTile(
               title: new Text(

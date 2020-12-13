@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:orderac_web/custom/custom_colors.dart';
-import 'package:orderac_web/screens/home/Orders/all_orders.dart';
+import 'package:orderac_web/screens/home/orders/all_orders.dart';
+import 'package:orderac_web/screens/home/orders/temp_orders.dart';
 import 'package:orderac_web/shared/buttons/flat_botton.dart';
 import 'package:orderac_web/shared/buttons/outline_button.dart';
 
@@ -10,12 +11,13 @@ class Home extends StatelessWidget {
     final body = ListView(
       children: [
         Container(
-          height: 750.0,
+          height: MediaQuery.of(context).size.height,
+          // height: 750.0,
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('assets/banners/1.jpg'),
+              image: AssetImage('assets/banners/2.jpg'),
               fit: BoxFit.cover,
-              colorFilter: ColorFilter.mode(Colors.black45, BlendMode.darken)
+              colorFilter: ColorFilter.mode(Colors.black38, BlendMode.darken)
             )
           ),
           child: Container(
@@ -34,11 +36,11 @@ class Home extends StatelessWidget {
                           Expanded(
                             flex: 7,
                             child: Text(
-                              'Orderac',
+                              'Orderac.web',
                               style: TextStyle(
-                                color: Colors.white70,
+                                color: Colors.white,
                                 fontWeight: FontWeight.w500,
-                                fontSize: 20.0,
+                                fontSize: 25.0,
                               ),
                             ),
                           ),
@@ -47,10 +49,10 @@ class Home extends StatelessWidget {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                flatButton('Home'),
-                                flatButton('About'),
-                                flatButton('Contact Us'),
-                                outlineButton(context, 'Join Us', Home())
+                                flatButton(context, 'Home'),
+                                flatButton(context, 'About'),
+                                flatButton(context, 'Contact Us'),
+                                outlineButton(context, 'Orders', AllOrders())
                               ],
                             ),
                           )
@@ -74,11 +76,12 @@ class Home extends StatelessWidget {
                                 Container(
                                   child: Text(
                                     'NOTHING\nBRINGS PEOPLE\nTOGETHER\nLIKE\nGOOD FOOD.',
+                                    overflow: TextOverflow.ellipsis,
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
                                       fontSize: 70.0,
                                       fontWeight: FontWeight.bold,
-                                      color: Colors.white70
+                                      color: Colors.white
                                     ),
                                   ),
                                 ),
@@ -108,12 +111,28 @@ class Home extends StatelessWidget {
         //   height: 1000.0,
         //   child: Container(
         //     color: customLightBlack,
+        //     child: Padding(
+        //       padding: EdgeInsets.symmetric(horizontal: 150.0),
+        //       child: Column(
+        //         children: [
+
+        //         ],
+        //       ),
+        //     ),
         //   ),
         // ),
-        Container(
-          height: 200.0,
-          color: customDarkBlack,
-        )
+        // Container(
+        //   height: 50.0,
+        //   color: customDarkBlack,
+        //   child: Center(
+        //     child: Text(
+        //       'Site under Construction',
+        //       style: TextStyle(
+        //         color: Colors.white,
+        //       ),
+        //     ),
+        //   ),
+        // )
       ],
     );
 
