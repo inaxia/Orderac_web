@@ -16,13 +16,16 @@ class Menu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final CollectionReference collectionReference = FirebaseFirestore.instance
-        .collection('food_courts')
-        .doc(foodCourt)
-        .collection(globalOrderID);
+    // final CollectionReference collectionReference = FirebaseFirestore.instance
+    //     .collection('food_courts')
+    //     .doc(foodCourt)
+    //     .collection(globalOrderID);
+
+    final CollectionReference firestore =
+      FirebaseFirestore.instance.collection('Orders');
 
     Future<void> addItem(itemName, itemPrice) {
-      return collectionReference.add({
+      return firestore.add({
         'Name': itemName,
         'Price': itemPrice,
       });

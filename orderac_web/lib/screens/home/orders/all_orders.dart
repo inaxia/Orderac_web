@@ -32,11 +32,15 @@ class AllOrders extends StatelessWidget {
           return Loading();
         }
 
-        return new ListView(
+        return ListView(
           children: snapshot.data.docs.map((DocumentSnapshot document) {
             return new ListTile(
-              title: new Text(
+              title: Text(
                 document.data()['Name'],
+                style: TextStyle(color: Colors.white),
+              ),
+              leading: Text(
+                document.data()['Price'],
                 style: TextStyle(color: Colors.white),
               ),
             );
