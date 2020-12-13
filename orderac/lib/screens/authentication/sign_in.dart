@@ -52,6 +52,13 @@ class _SignInState extends State<SignIn> {
     );
 
     final body = Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage('assets/initials/sign_in.jpg'),
+          fit: BoxFit.cover,
+          colorFilter: ColorFilter.mode(Colors.black45, BlendMode.darken),
+        ),
+      ),
       padding: EdgeInsets.symmetric(horizontal: 50.0, vertical: 20.0),
       child: Form(
         key: _formKey,
@@ -66,6 +73,7 @@ class _SignInState extends State<SignIn> {
                 fontSize: 18.0,
               ),
             ),
+            SizedBox(height: 15.0),
             TextFormField(
               style: TextStyle(color: Colors.white),
               cursorColor: Colors.white,
@@ -73,6 +81,16 @@ class _SignInState extends State<SignIn> {
                 hoverColor: Colors.white,
                 fillColor: Colors.white,
                 focusColor: Colors.white,
+                counterText: '',
+                border: InputBorder.none,
+                hintText: 'xyz@gmail.com',
+                hintStyle: TextStyle(fontSize: 18.0, color: Colors.white54),
+                labelText: "Enter email",
+                labelStyle: TextStyle(fontSize: 18.0, color: Colors.white),
+                focusedBorder:OutlineInputBorder(
+                  borderSide: const BorderSide(color: Colors.white, width: 2.0),
+                  borderRadius: BorderRadius.circular(6.0),
+                ),
               ),
               validator: (value) {
                 if (value == '') {
@@ -87,6 +105,7 @@ class _SignInState extends State<SignIn> {
                 });
               },
             ),
+            SizedBox(height: 8.0),
             TextFormField(
               style: TextStyle(color: Colors.white),
               cursorColor: Colors.white,
@@ -94,6 +113,16 @@ class _SignInState extends State<SignIn> {
                 hoverColor: Colors.white,
                 fillColor: Colors.white,
                 focusColor: Colors.white,
+                counterText: '',
+                border: InputBorder.none,
+                hintText: '123456',
+                hintStyle: TextStyle(fontSize: 18.0, color: Colors.white54),
+                labelText: "Enter password",
+                labelStyle: TextStyle(fontSize: 18.0, color: Colors.white),
+                focusedBorder:OutlineInputBorder(
+                  borderSide: const BorderSide(color: Colors.white, width: 2.0),
+                  borderRadius: BorderRadius.circular(6.0),
+                ),
               ),
               validator: (value) {
                 if (value.length < 6) {
@@ -127,7 +156,10 @@ class _SignInState extends State<SignIn> {
             SizedBox(height: 15.0),
             Text(
               error,
-              style: TextStyle(color: Colors.red),
+              style: TextStyle(
+                color: Colors.red,
+                fontSize: 18.0,  
+              ),
             )
           ],
         ),

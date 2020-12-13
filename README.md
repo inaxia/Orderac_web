@@ -1,4 +1,5 @@
-![](https://www.crushpixel.com/static16/preview2/stock-photo-fastfood-hand-drawn-cartoon-doodles-illustration-colorful-vector-banner-2371639.jpg)
+<img src="https://www.crushpixel.com/static16/preview2/stock-photo-fastfood-hand-drawn-cartoon-doodles-illustration-colorful-vector-banner-2371639.jpg" width=100%><br>
+
 # Orderac
 We know that during this COVID time many industries are failing to grow as they were growing before.<br>
 But some are growing faster than ever before.<br>
@@ -32,8 +33,7 @@ food courts can see their respective list of orders.
 **`orderac` -> app**<br>
 **`orderac_web` -> web**
 
-**For running app:**
-
+**For running app:**<br>
 Run the following commands:
 
 1. `cd .\orderac\` -> after running this, directory should be '..\orderac\orderac'
@@ -41,8 +41,7 @@ Run the following commands:
 3. `flutter upgrade`
 4. `flutter run` -> make sure an android/emulator device is connected
 
-**For running web:**
-
+**For running web:**<br>
 If you want to run app & web simultaneously, you have to open a new window of any IDE and then run the following commands:
 
 1. `cd ..` -> if you are still in '..\orderac\orderac'

@@ -11,8 +11,22 @@ import 'package:orderac/services/database_service.dart';
 import 'package:orderac/shared/page_transitions/slide_right_route.dart';
 import 'package:provider/provider.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
+  @override
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+
+  @override
+  void initState() {
+    final user = firebaseAuth.currentUser;
+    globalOrderID = user.uid;
+    super.initState();
+  }
+
   final AuthService _auth = AuthService();
+
   final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
 
   @override
@@ -109,9 +123,7 @@ class Home extends StatelessWidget {
     final floatingActionButton = FloatingActionButton(
       backgroundColor: customPink,
       child: Icon(Icons.qr_code),
-      onPressed: () async {
-        final user = firebaseAuth.currentUser;
-        globalOrderID = user.uid;
+      onPressed: () {
         showDialog(
           context: context,
           child: AlertDialog(

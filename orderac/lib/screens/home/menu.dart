@@ -21,9 +21,10 @@ class Menu extends StatelessWidget {
         .doc(foodCourt)
         .collection(globalOrderID);
 
-    Future<void> addItem(itemName) {
+    Future<void> addItem(itemName, itemPrice) {
       return collectionReference.add({
         'Name': itemName,
+        'Price': itemPrice,
       });
     }
 
@@ -132,7 +133,7 @@ class Menu extends StatelessWidget {
                                       height: 40.0,
                                       child: GestureDetector(
                                         onTap: () {
-                                          addItem(foodItems[index][1]);
+                                          addItem(foodItems[index][1], foodItems[index][2]);
                                           final snackBar = showSnackBar(Icons.thumb_up_alt_outlined, 'Order Placed', Colors.white);
                                           _scaffoldKey.currentState.showSnackBar(snackBar);
                                         },
