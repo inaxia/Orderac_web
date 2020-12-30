@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:orderac_web/screens/home/home.dart';
+import 'package:orderac_web/screens/home/temp/controller.dart';
 
 flatButton(context, text) {
   return FlatButton(
@@ -17,7 +17,7 @@ flatButton(context, text) {
     onPressed: () {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => Home()),
+        MaterialPageRoute(builder: (context) => MyPageView()),
       );
     },
   );

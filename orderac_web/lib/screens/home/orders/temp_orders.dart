@@ -1,4 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_admin/firebase_admin.dart';
+import 'package:firebase_admin/src/credential.dart';
 import 'package:flutter/material.dart';
 import 'package:orderac_web/custom/custom_colors.dart';
 import 'package:orderac_web/services/auth_services.dart';
@@ -19,6 +21,22 @@ class TempOrders extends StatelessWidget {
         .collection('food_courts')
         .doc(foodCourt)
         .get();
+
+    //TODO: to list all the collections
+    var tempReference =
+        FirebaseFirestore.instance.collection('food_courts').doc(foodCourt);
+
+    // tempReference.get().then((value) => {
+    //   for (var collection in value) {
+    //     print(collection.id)
+    //   }
+    // });
+
+    // tempReference.getCollections().then(collections => {
+    //   for (let collection of collections) {
+    //     console.log(`Found collection with id: ${collection.id}`);
+    //   }
+    // });
 
     final appBar = AppBar(
       backgroundColor: customLightBlack,

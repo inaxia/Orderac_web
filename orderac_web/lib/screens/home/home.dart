@@ -11,8 +11,8 @@ class Home extends StatelessWidget {
     final body = ListView(
       children: [
         Container(
-          height: MediaQuery.of(context).size.height,
-          // height: 750.0,
+          // height: MediaQuery.of(context).size.height,
+          height: 750.0,
           decoration: BoxDecoration(
             image: DecorationImage(
               image: AssetImage('assets/banners/2.jpg'),
@@ -61,10 +61,10 @@ class Home extends StatelessWidget {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 80.0, horizontal: 150.0),
-                  child: Expanded(
-                    flex: 1,
+                Expanded(
+                  flex: 1,
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(vertical: 80.0, horizontal: 150.0),
                     child: Container(
                       child: Row(
                         children: [
@@ -100,7 +100,7 @@ class Home extends StatelessWidget {
                           ),
                         ],
                       ),
-                    )
+                    ),
                   ),
                 ),
               ],
