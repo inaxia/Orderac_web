@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
     return StreamProvider<AboutUser>.value(
       value: AuthService().user,
       child: MaterialApp(
-        title: 'orderac.web',
+        title: 'Orderac',
         theme: ThemeData(
           accentColor: customDarkBlack
         ),

@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:orderac_web/custom/custom_colors.dart';
+// import 'dart:js' as js;
+import 'dart:html' as html;
 
 class FirstScreen extends StatelessWidget {
+  final String tagline;
+  final String pitch;
+  final String playstoreLink;
+
+  FirstScreen({this.tagline, this.pitch, this.playstoreLink});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -35,18 +43,73 @@ class FirstScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('DECEMBER 30', style: TextStyle(fontSize: 30.0, color: Colors.white),),
+                      Text(
+                        tagline,
+                        //'SATISFY YOUR CRAVINGS',
+                        style: TextStyle(fontSize: 30.0, color: Colors.white),
+                      ),
                       SizedBox(height: 35.0),
                       Divider(
-                        endIndent: 500.0,
+                        endIndent: 450.0,
                         height: 1.0,
                         color: Colors.red[300],
                       ),
                       SizedBox(height: 20.0),
                       Text(
-                        'Best Infographic Designs for 2016. 2020 is coming to it\'s end. I like how this layout creates a 2-D effect.Best Infographic Designs for 2016. 2020 is coming to it\'s end. I like how this layout creates a 2-D effect.Best Infographic Designs for 2016. 2020 is coming to it\'s end. I like how this layout creates a 2-D effect.Best Infographic Designs for 2016.',
-                        style: TextStyle(fontSize: 15.0, color: Colors.white, height: 3.0),
+                        pitch,
+                        //'Now you can enjoy your meal without hustling with others in food court. Your food is now just a few clicks away. Spend your outings without wandering here and there in food courts. Order food directly from our app from anywhere inside the mall, rather than standing in a queue to order food.\nDownload the app now!',
+                        style: TextStyle(
+                            fontSize: 15.0, color: Colors.white, height: 3.0),
                       ),
+                      SizedBox(height: 20.0),
+                      SizedBox(
+                        width: 120.0,
+                        height: 40.0,
+                        child: OutlineButton(
+                          borderSide: BorderSide(
+                            color: Colors.white,
+                            style: BorderStyle.solid,
+                            width: 1.0,
+                          ),
+                          hoverColor: Colors.white12,
+                          color: Colors.transparent,
+                          autofocus: true,
+                          shape: RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(3.0)),
+                          ),
+                          onPressed: () {
+                            // js.context.callMethod('open', ['https://play.google.com/store']);
+                            html.window.open(
+                              playstoreLink,
+                              'new tab',
+                            );
+                          },
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              SizedBox(
+                                height: 20.0,
+                                child: Image.asset(
+                                  'assets/icon/playstore_icon.png',
+                                ),
+                              ),
+                              // Icon(Icons.play_arrow, color: Colors.white,),
+                              SizedBox(
+                                width: 8.0,
+                              ),
+                              Text(
+                                'Playstore',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 15.0,
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      )
                     ],
                   ),
                 ),
@@ -60,7 +123,15 @@ class FirstScreen extends StatelessWidget {
             child: Container(
               child: Center(
                 // child: Text('ORDERAC', style: TextStyle(fontSize: 40.0, color: Colors.white),),
-                child: Text('ORDERAC', style: GoogleFonts.openSansCondensed(fontSize: 100.0, color: Colors.white, fontWeight: FontWeight.bold, letterSpacing: 50.0),),
+                child: Text(
+                  'ORDERAC',
+                  style: GoogleFonts.openSansCondensed(
+                    fontSize: 100.0,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 50.0,
+                  ),
+                ),
               ),
             ),
           )
